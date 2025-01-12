@@ -1,0 +1,15 @@
+package com.foodcourt.user_micro.adapters.driven.mapper;
+
+
+import com.foodcourt.user_micro.adapters.driven.entity.UserEntity;
+import com.foodcourt.user_micro.domain.model.User;
+import org.mapstruct.Mapper;
+
+@Mapper(componentModel = "spring",
+        unmappedSourcePolicy = org.mapstruct.ReportingPolicy.IGNORE,
+        unmappedTargetPolicy = org.mapstruct.ReportingPolicy.IGNORE)
+
+public interface IUserMapperEntity {
+    UserEntity userToUserEntity(User user);
+    User userEntityToUser(UserEntity userEntity);
+}
