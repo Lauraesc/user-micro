@@ -5,7 +5,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/shop
+    url: jdbc:mysql://localhost:3306/foodcourt_user
     username: root
     password: root
 

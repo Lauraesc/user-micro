@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class UserRequest {
 
     @NotBlank(message = "First name is required")
-    @Size(min = 50, message = "First name must be at least 2 characters long")
+    @Size(min = 5, message = "First name must be at least 2 characters long")
     private String firsName;
     private String lastName;
     @Email(message = "Email should be valid")
@@ -24,8 +24,6 @@ public class UserRequest {
     @NotNull(message = "Birth date is required")
     @Past(message = "Birth date must be in the past")
     private LocalDate birthDate;
-    private String role;
     @NotBlank(message = "DNI is required")
-    @Pattern(regexp = "^[0-9]{8}[A-Z]$", message = "DNI format invalid")
     private String dni;
 }

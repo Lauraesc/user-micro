@@ -14,8 +14,6 @@ import org.mapstruct.Mappings;
     unmappedTargetPolicy = org.mapstruct.ReportingPolicy.IGNORE)
 
 public interface IUserMapperDto {
-
-        @Mapping(target = "id", ignore = true) //cuando haya que asignar un vlr al id del usuario que va a retornar, ignorelo
         User userRequestToUser(UserRequest userRequest);
         UserResponseSave userToUserResponseSave(User user);
 

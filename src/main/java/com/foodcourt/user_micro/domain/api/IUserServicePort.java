@@ -4,5 +4,5 @@ import com.foodcourt.user_micro.domain.model.User;
 
 public interface IUserServicePort {
 
-    User saveUser(User user);
+    User saveUserAdmin(User user);
 }

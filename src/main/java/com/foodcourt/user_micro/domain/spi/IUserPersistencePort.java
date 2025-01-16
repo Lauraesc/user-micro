@@ -2,8 +2,10 @@ package com.foodcourt.user_micro.domain.spi;
 
 import com.foodcourt.user_micro.domain.model.User;
 
+import java.util.Optional;
+
 public interface  IUserPersistencePort {
 
     User saveUser(User user);
-    Boolean existsUserByEmail(String email);
+    Optional<User> existsUserByEmail(String email);
 }
