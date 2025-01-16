@@ -14,7 +14,7 @@ public class UserRequest {
 
     @NotBlank(message = "First name is required")
     @Size(min = 5, message = "First name must be at least 2 characters long")
-    private String firsName;
+    private String firstName;
     private String lastName;
     @Email(message = "Email should be valid")
     private String email;

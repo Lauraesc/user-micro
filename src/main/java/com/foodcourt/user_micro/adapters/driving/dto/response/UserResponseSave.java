@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserResponseSave {
     private Long id;
-    private String firsName;
+    private String firstName;
     private String lastName;
     private String email;
 }

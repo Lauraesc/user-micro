@@ -19,7 +19,7 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "first_name", nullable = false, length = 50)
-    private String firsName;
+    private String firstName;
     private String lastName;
     @Column(unique = true, nullable = false)
     private String email;
