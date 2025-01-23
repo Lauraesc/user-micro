@@ -29,6 +29,15 @@ public class UserUseCase implements IUserServicePort {
         return userSaved;
     }
 
+    @Override
+    public Boolean getUserRole(Long id, String role) {
+        User user = userPersistencePort.getUserRole(id);
+        if(user == null || !user.getRole().getRole().equals(role)) {
+            return false;
+        }
+        return true;
+    }
+
     public User saveUserOwner(User user) {
         validateUser(user);
         user.setRole(getRole("OWNER"));
@@ -54,7 +63,7 @@ public class UserUseCase implements IUserServicePort {
             throw new UserNoDataFoundException("El DNI no puede ser nulo");
         }
         if(!isUserValid(user)){
-            throw new UserNoDataFoundException("El usuario no es valido");
+            throw new UserNoDataFoundException("El usuario no es válido");
         }
         if(userPersistencePort.existsUserByEmail(user.getEmail()).isPresent()){
             throw new EmailAlreadyExistsException("Ya hay un usuario con ese email");

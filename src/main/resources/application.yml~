@@ -19,3 +19,7 @@ spring:
         springframework:
           orm:
             jpa: DEBUG
+  spring:
+    cloud:
+      compatibility-verifier:
+        enabled=false

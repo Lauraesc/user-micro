@@ -26,4 +26,9 @@ public class UserAdapter implements IUserPersistencePort {
     public Optional<User> existsUserByEmail(String email) {
         return userRepository.findByEmail(email).map(userMapperEntity::userEntityToUser);
     }
+
+    @Override
+    public User getUserRole(Long id) {
+        return userMapperEntity.userEntityToUser(userRepository.findById(id).get()); //con el .get() se obtiene el UserEntity del Optional<UserEntity>
+    }
 }
