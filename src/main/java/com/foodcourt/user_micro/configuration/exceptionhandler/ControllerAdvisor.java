@@ -4,6 +4,7 @@ package com.foodcourt.user_micro.configuration.exceptionhandler;
 import com.foodcourt.user_micro.domain.exception.EmailAlreadyExistsException;
 import com.foodcourt.user_micro.domain.exception.RoleNoDataFoundException;
 import com.foodcourt.user_micro.domain.exception.UserNoDataFoundException;
+import com.foodcourt.user_micro.domain.exception.UserNotAdultException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,14 @@ public class ControllerAdvisor {
     @ExceptionHandler(RoleNoDataFoundException.class)
     public ResponseEntity<ExceptionCodeResponse> handleRoleNoDataFoundException(RoleNoDataFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionCodeResponse(
-                String.valueOf(HttpStatus.NOT_FOUND.value()), ex.getMessage(), HttpStatus.CONFLICT.name(), LocalDateTime.now()));
+                String.valueOf(HttpStatus.NOT_FOUND.value()), ex.getMessage(), HttpStatus.NOT_FOUND.name(), LocalDateTime.now()));
+
+    }
+
+    @ExceptionHandler(UserNotAdultException.class)
+    public ResponseEntity<ExceptionCodeResponse> handleUserNotAdultException(UserNotAdultException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ExceptionCodeResponse(
+                String.valueOf(HttpStatus.BAD_REQUEST.value()), ex.getMessage(), HttpStatus.BAD_REQUEST.name(), LocalDateTime.now()));
 
     }
 
