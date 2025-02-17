@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 public class RoleAdapter implements IRolePersistencePort {
     private final IRoleRepository roleRepository;
     private final IRoleMapperEntity roleMapperEntity;
+
     @Override
     public Role findRoleByName(String name) {
         return roleMapperEntity.roleEntityToRole(roleRepository.findByName(name));

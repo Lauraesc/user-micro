@@ -7,7 +7,6 @@ import com.foodcourt.user_micro.domain.exception.UserNoDataFoundException;
 import com.foodcourt.user_micro.domain.exception.UserNotAdultException;
 import com.foodcourt.user_micro.domain.model.Role;
 import com.foodcourt.user_micro.domain.model.User;
-import com.foodcourt.user_micro.domain.spi.IPasswordEncodePersistencePort;
 import com.foodcourt.user_micro.domain.spi.IRolePersistencePort;
 import com.foodcourt.user_micro.domain.spi.IUserPersistencePort;
 import lombok.RequiredArgsConstructor;
@@ -21,14 +20,13 @@ public class UserUseCase implements IUserServicePort {
 
     private final IUserPersistencePort userPersistencePort;
     private final IRolePersistencePort rolePersistencePort;
-    private final IPasswordEncodePersistencePort passwordEncodePersistencePort;
 
     @Override
     public User saveUserAdmin(User user) {
         validateUser(user);
         user.setRole(getRole("ADMIN"));
-        passwordEncodePersistencePort.encodePassword(user);
-        return userPersistencePort.saveUser(user);
+        User userSaved = userPersistencePort.saveUser(user);
+        return userSaved;
     }
 
     @Override

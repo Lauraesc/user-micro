@@ -19,7 +19,10 @@ public class UserRequest {
     @Email(message = "Email should be valid")
     private String email;
     @NotBlank(message = "La contraseña el obligatoria")
-    @Pattern(regexp = "^[a-z0-9]+$", message = "La contraseña solo debe contener letras minúsculas y números")
+    @Pattern(
+            regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
+            message = "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial"
+    )
     private String password;
     @NotBlank(message = "El teléfono no puede ser nulo")
     @Size(min = 10, message = "El teléfono debe tener al menos 10 caracteres")
