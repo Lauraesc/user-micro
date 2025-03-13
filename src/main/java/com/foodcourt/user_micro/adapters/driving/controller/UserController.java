@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -22,6 +23,8 @@ public class UserController {
     private final IUserServicePort userServicePort;
     private final IUserMapperDto userMapperDto;
 
+
+    @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/")
     public ResponseEntity<UserResponseSave> saveUserAdmin(@Valid @RequestBody UserRequest userRequest) {
         User user = userServicePort.saveUserAdmin(userMapperDto.userRequestToUser(userRequest));
